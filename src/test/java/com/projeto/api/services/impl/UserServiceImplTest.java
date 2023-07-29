@@ -3,7 +3,7 @@ package com.projeto.api.services.impl;
 import com.projeto.api.domain.User;
 import com.projeto.api.domain.dto.UserDTO;
 import com.projeto.api.repositories.UserRepository;
-import com.projeto.api.services.exceptions.DataIntegratyViolationException;
+import com.projeto.api.services.exceptions.DataIntegrityViolationException;
 import com.projeto.api.services.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -111,7 +111,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2);
             service.create(userDTO);
         } catch (Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals("Email already registered in the system.", ex.getMessage());
         }
     }
@@ -138,7 +138,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2);
             service.update(userDTO);
         } catch (Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals("Email already registered in the system.", ex.getMessage());
         }
     }

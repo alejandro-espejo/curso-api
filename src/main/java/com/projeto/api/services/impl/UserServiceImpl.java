@@ -4,7 +4,7 @@ import com.projeto.api.domain.User;
 import com.projeto.api.domain.dto.UserDTO;
 import com.projeto.api.repositories.UserRepository;
 import com.projeto.api.services.UserService;
-import com.projeto.api.services.exceptions.DataIntegratyViolationException;
+import com.projeto.api.services.exceptions.DataIntegrityViolationException;
 import com.projeto.api.services.exceptions.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     private void findByEmail(UserDTO dto) {
         Optional<User> user = userRepository.findByEmail(dto.getEmail());
         if (user.isPresent() && !user.get().getId().equals(dto.getId())) {
-            throw new DataIntegratyViolationException("Email already registered in the system.");
+            throw new DataIntegrityViolationException("Email already registered in the system.");
         }
     }
 }
